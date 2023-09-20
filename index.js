@@ -1,10 +1,9 @@
 const express = require("express");
 const app = express();
 
-console.log(process.env.OPENAI_API_KEY);
 const { OpenAI } = require("openai");
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 function generatePrompt(code) {
@@ -22,10 +21,6 @@ function generatePrompt(code) {
   Response:`;
 }
 
-app.get("/", (req, res) => {
-  res.send("backend");
-});
-
 app.get("/api/decode", async (req, res) => {
   try {
     const completion = await openai.chat.completions.create({
@@ -39,7 +34,7 @@ app.get("/api/decode", async (req, res) => {
     });
     res.send(completion.choices[0].message.content);
   } catch (e) {
-    console.log(e);
+    res.send(e)
   }
 });
 
