@@ -1,4 +1,5 @@
 const express = require("express");
+const c = require("cors");
 const app = express();
 
 const { OpenAI } = require("openai");
@@ -32,6 +33,7 @@ app.get("/api/decode", async (req, res) => {
       ],
       model: "gpt-3.5-turbo",
     });
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(completion.choices[0].message.content);
   } catch (e) {
     res.send(e)
