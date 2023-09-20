@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-//console.log(process.env.OPENAI_API_KEY);
+console.log(process.env.OPENAI_API_KEY);
 const { OpenAI } = require("openai");
 const openai = new OpenAI({
   apiKey: "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",
