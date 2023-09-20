@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 
 //console.log(process.env.OPENAI_API_KEY);
-const { OpenAI } = require("openai");
-const openai = new OpenAI({
-  apiKey: "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",
-});
+// import { OpenAI } from "openai";
+// const openai = new OpenAI({
+//   apiKey: "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",
+// });
 
 function generatePrompt(code) {
   return `Explain what the following code does: hello this is a code snippet. If it is not code, simply say 'not code'.
@@ -26,22 +26,22 @@ app.get("/", (req, res) => {
   res.send("backend");
 });
 
-app.get("/api/decode", async (req, res) => {
-  try {
-    const completion = await openai.chat.completions.create({
-      messages: [
-        {
-          role: "user",
-          content: generatePrompt("hello world!"),
-        },
-      ],
-      model: "gpt-3.5-turbo",
-    });
-    res.send(completion.choices[0].message.content);
-  } catch (e) {
-    console.log(e);
-  }
-});
+// app.get("/api/decode", async (req, res) => {
+//   try {
+//     const completion = await openai.chat.completions.create({
+//       messages: [
+//         {
+//           role: "user",
+//           content: generatePrompt("hello world!"),
+//         },
+//       ],
+//       model: "gpt-3.5-turbo",
+//     });
+//     res.send(completion.choices[0].message.content);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// });
 
 app.listen(8080, () => {
   console.log("backend running on port 8080");
