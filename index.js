@@ -22,6 +22,10 @@ function generatePrompt(code) {
   Response:`;
 }
 
+app.get("/", (req, res) => {
+  res.send("backend");
+});
+
 app.get("/api/decode", async (req, res) => {
   try {
     const completion = await openai.chat.completions.create({
@@ -35,7 +39,7 @@ app.get("/api/decode", async (req, res) => {
     });
     res.send(completion.choices[0].message.content);
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 });
 
