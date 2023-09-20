@@ -22,6 +22,7 @@ function generatePrompt(code) {
 }
 
 app.get("/api/decode", async (req, res) => {
+  console.log(req.body);
   try {
     const completion = await openai.chat.completions.create({
       messages: [
@@ -33,12 +34,12 @@ app.get("/api/decode", async (req, res) => {
       model: "gpt-3.5-turbo",
     });
     res.header("Access-Control-Allow-Origin", "*");
-    res.send(completion.choices[0].message.content);
+    res.send({ codeExplanation: completion.choices[0].message.content });
   } catch (e) {
-    res.send(e)
+    res.send(e);
   }
 });
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log("backend running on port 8080");
+  console.log("Welcome to decode backend");
 });
