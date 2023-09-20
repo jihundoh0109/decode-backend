@@ -25,13 +25,13 @@ function generatePrompt(code) {
 }
 
 app.post("/api/decode", async (req, res) => {
-  console.log(req.body);
+  const selectedCode = req.body.selectedCode;
   try {
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: "user",
-          content: generatePrompt("hello world!"),
+          content: generatePrompt(selectedCode),
         },
       ],
       model: "gpt-3.5-turbo",
