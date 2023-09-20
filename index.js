@@ -21,7 +21,7 @@ function generatePrompt(code) {
   Response:`;
 }
 
-app.get("/api/decode", async (req, res) => {
+app.post("/api/decode", async (req, res) => {
   console.log(req.body);
   try {
     const completion = await openai.chat.completions.create({
