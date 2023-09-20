@@ -10,7 +10,8 @@ const openai = new OpenAI({
 });
 
 function generatePrompt(code) {
-  return `Explain what the following code does: hello this is a code snippet. If it is not code, simply say 'not code'.
+  return `Explain what the following code does: hello this is a code snippet. If it is not code, simply say 'not code'. 
+  When describing the code snippet, talk about what it does as well as what its purpose is as a whole.
 
   Input: var x = 3; 
   Response: This code snippet declares variable whose name is x and initializes its value to 3. 
