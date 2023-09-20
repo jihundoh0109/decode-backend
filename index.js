@@ -1,5 +1,4 @@
 const express = require("express");
-const c = require("cors");
 const app = express();
 
 const { OpenAI } = require("openai");
